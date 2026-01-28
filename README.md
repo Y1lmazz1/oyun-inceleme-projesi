@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 GameCritique - Profesyonel Oyun İnceleme Platformu
 
-## Getting Started
+Bu proje, oyun tutkunları için modern, hızlı ve güvenli bir inceleme platformudur. Kullanıcılar oyun incelemelerini okuyabilir ve yorum yapabilirken, admin paneli üzerinden tam kontrol sağlanmaktadır.
 
-First, run the development server:
+## 🚀 Özellikler
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Admin Paneli:** Oyun ekleme, düzenleme ve silme işlemleri.
+- **Yorum Sistemi:** Kullanıcılar tarafından anlık yorum ekleme ve admin tarafından yorum yönetimi.
+- **Güvenli Kimlik Doğrulama:** Supabase Auth ile korunan admin erişimi.
+- **Dinamik İçerik:** Next.js Server Actions ve Supabase ile anlık veri güncellenmesi.
+- **Modern Arayüz:** Tailwind CSS ve Slate teması ile göz yormayan "Gaming" tasarımı.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Kullanılan Teknolojiler
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** [Next.js 15 (App Router)](https://nextjs.org/)
+- **Veritabanı & Auth:** [Supabase](https://supabase.com/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Dil:** [TypeScript](https://www.typescriptlang.org/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Kurulum
 
-## Learn More
+Projeyi yerel bilgisayarınızda çalıştırmak için şu adımları izleyin:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Repoyu klonlayın:**
+   ```bash
+   git clone [https://github.com/Y1lmazz1/oyun-inceleme-projesi.git](https://github.com/Y1lmazz1/oyun-inceleme-projesi.git)

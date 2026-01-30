@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
-import { User } from '@supabase/supabase-js'; // User tipini ekledik
+import { User } from '@supabase/supabase-js'; 
 
 export default function Navbar() {
-  // any yerine User | null kullanarak tip güvenliği sağladık
+
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
@@ -17,7 +17,6 @@ export default function Navbar() {
     };
     getUser();
 
-    // Oturum değişikliklerini dinleyen mekanizma
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
@@ -32,7 +31,7 @@ export default function Navbar() {
     if (!error) {
       setUser(null);
       router.push('/');
-      router.refresh(); // Sayfayı yenileyerek state'leri temizle
+      router.refresh(); 
     }
   };
 

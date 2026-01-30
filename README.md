@@ -23,4 +23,8 @@ Projeyi yerel bilgisayarınızda çalıştırmak için şu adımları izleyin:
 
 1. **Repoyu klonlayın:**
    ```bash
+<<<<<<< HEAD
    git clone [https://github.com/Y1lmazz1/oyun-inceleme-projesi.git](https://github.com/Y1lmazz1/oyun-inceleme-projesi.git)
+=======
+   git clone [https://github.com/Y1lmazz1/oyun-inceleme-projesi.git](https://github.com/Y1lmazz1/oyun-inceleme-projesi.git)
+>>>>>>> bb21d60 (Admin paneli silme ve düzenleme özellikleri eklendi)

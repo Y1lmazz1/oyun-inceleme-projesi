@@ -17,9 +17,7 @@ export default function Login() {
       alert("Hata: " + error.message);
       setYukleniyor(false);
     } else {
-      // DİKKAT: router.push yerine bunu kullanıyoruz. 
-      // Bu sayede tarayıcı çerezleri tazeleyip sunucuya admin olduğumuzu söyler.
-      window.location.href = '/'; 
+      window.location.href = '/admin'; 
     }
   };
 
@@ -39,7 +37,6 @@ export default function Login() {
             <label className="text-slate-400 text-xs font-bold uppercase ml-1">E-Posta</label>
             <input 
               type="email" 
-              placeholder="admin@gamecritique.com" 
               className="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-purple-500 transition-all mt-1" 
               onChange={(e) => setEmail(e.target.value)} 
               required
@@ -50,7 +47,6 @@ export default function Login() {
             <label className="text-slate-400 text-xs font-bold uppercase ml-1">Şifre</label>
             <input 
               type="password" 
-              placeholder="••••••••" 
               className="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 text-white outline-none focus:border-purple-500 transition-all mt-1" 
               onChange={(e) => setPassword(e.target.value)} 
               required
@@ -62,7 +58,7 @@ export default function Login() {
           disabled={yukleniyor}
           className="w-full bg-purple-600 p-4 rounded-xl font-bold text-white hover:bg-purple-500 transition-all active:scale-95 shadow-lg shadow-purple-500/20 disabled:opacity-50"
         >
-          {yukleniyor ? 'Giriş Yapılıyor...' : 'Sisteme Giris Yap'}
+          {yukleniyor ? 'Giriş Yapılıyor...' : 'Sisteme Giriş Yap'}
         </button>
       </form>
     </div>

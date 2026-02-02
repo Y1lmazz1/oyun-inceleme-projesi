@@ -1,53 +1,44 @@
 'use client';
 import { motion } from 'framer-motion';
+import BackgroundParticles from "@/components/BackgroundParticles";
 
 export default function Iletisim() {
   return (
-  
-    <main className="min-h-screen bg-transparent text-white py-20 px-6 relative z-10">
-      <div className="max-w-2xl mx-auto text-center">
-        <motion.h2 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-4xl font-black uppercase italic tracking-tighter mb-12"
-        >
-          Merkez Üssüne <span className="text-blue-500">Mesaj Gönder</span>
-        </motion.h2>
+    <div className="min-h-screen bg-[#020617] text-white relative overflow-hidden">
+      <BackgroundParticles />
+      
+      <main className="relative z-10 max-w-4xl mx-auto px-8 pt-32 pb-20">
+        <div className="grid lg:grid-cols-2 gap-16">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+            <h1 className="text-6xl font-black italic tracking-tighter mb-6">İLETİŞİM.</h1>
+            <p className="text-slate-400 font-bold mb-8">Radar sinyallerini bize gönderin. İş birliği, öneri veya sadece merhaba demek için buradayız.</p>
+            
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 text-sm font-black text-purple-400 tracking-widest">
+                <span className="w-10 h-[1px] bg-purple-500"></span>
+                RADAR@STATION.COM
+              </div>
+              <div className="flex items-center gap-4 text-sm font-black text-slate-500 tracking-widest">
+                <span className="w-10 h-[1px] bg-slate-700"></span>
+                NIGHT CITY, SECTOR 7
+              </div>
+            </div>
+          </motion.div>
 
-        <form className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input 
-              type="text" 
-              placeholder="KOD ADINIZ" 
-              className="bg-slate-900/60 backdrop-blur-md border border-white/5 p-4 rounded-2xl focus:border-purple-500 outline-none transition-all italic text-sm" 
-            />
-            <input 
-              type="email" 
-              placeholder="FREKANS (E-POSTA)" 
-              className="bg-slate-900/60 backdrop-blur-md border border-white/5 p-4 rounded-2xl focus:border-purple-500 outline-none transition-all italic text-sm" 
-            />
-          </div>
-          <textarea 
-            rows={5} 
-            placeholder="İLETİNİZİ BURAYA BIRAKIN..." 
-            className="w-full bg-slate-900/60 backdrop-blur-md border border-white/5 p-4 rounded-2xl focus:border-purple-500 outline-none transition-all italic text-sm" 
-          />
-          
-          <motion.button 
-            whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(168,85,247,0.4)" }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl font-black uppercase tracking-[0.3em] text-sm shadow-xl shadow-purple-900/20"
+          <motion.form 
+            initial={{ opacity: 0, x: 20 }} 
+            animate={{ opacity: 1, x: 0 }}
+            className="space-y-4 bg-slate-900/60 backdrop-blur-2xl p-8 rounded-[3rem] border border-white/5"
           >
-            Sinyali Gönder →
-          </motion.button>
-        </form>
-
-        <div className="mt-16 flex justify-center gap-8 opacity-40">
-          <span className="text-[10px] font-bold tracking-widest cursor-pointer hover:text-purple-400 transition-colors">TWITCH</span>
-          <span className="text-[10px] font-bold tracking-widest cursor-pointer hover:text-purple-400 transition-colors">YOUTUBE</span>
-          <span className="text-[10px] font-bold tracking-widest cursor-pointer hover:text-purple-400 transition-colors">X (TWITTER)</span>
+            <input placeholder="KOD ADINIZ" className="w-full bg-black/40 border border-white/5 p-4 rounded-2xl outline-none focus:border-purple-500 transition-all font-bold text-xs" />
+            <input placeholder="E-POSTA" className="w-full bg-black/40 border border-white/5 p-4 rounded-2xl outline-none focus:border-purple-500 transition-all font-bold text-xs" />
+            <textarea placeholder="MESAJINIZ" rows={5} className="w-full bg-black/40 border border-white/5 p-4 rounded-2xl outline-none focus:border-purple-500 transition-all font-bold text-xs resize-none" />
+            <button className="w-full bg-purple-600 hover:bg-white hover:text-black py-4 rounded-2xl font-black uppercase text-[10px] tracking-[0.3em] transition-all shadow-lg shadow-purple-600/20">
+              SİNYALİ GÖNDER
+            </button>
+          </motion.form>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }

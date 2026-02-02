@@ -1,60 +1,52 @@
 'use client';
 import { motion } from 'framer-motion';
+import BackgroundParticles from "@/components/BackgroundParticles";
+import Link from 'next/link';
 
-export default function Hakkimda() {
-  const yetenekler = [
-    { isim: 'RPG Uzmanlığı', oran: '95%' },
-    { isim: 'Teknik Analiz', oran: '88%' },
-    { isim: 'Hikaye Anlatımı', oran: '92%' },
-    { isim: 'Sektör Bilgisi', oran: '85%' },
+export default function Hakkimizda() {
+  const ozellikler = [
+    { baslik: "DÜRÜST ANALİZ", detay: "Sadece rakamlar değil, gerçek deneyimler.", ikon: "🎯" },
+    { baslik: "FÜTÜRİSTİK VERİ", detay: "8 farklı kriterle en derin radar taraması.", ikon: "📡" },
+    { baslik: "TOPLULUK GÜCÜ", detay: "Oyuncuların sesini merkeze alan yapı.", ikon: "👥" }
   ];
 
   return (
- 
-
-    <main className="min-h-screen bg-transparent text-white py-20 px-6 relative z-10">
-      <div className="max-w-4xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-       
-          className="bg-slate-900/40 border border-white/10 rounded-[3rem] p-10 backdrop-blur-xl shadow-2xl"
-        >
-          <h1 className="text-5xl font-black italic uppercase tracking-tighter mb-8">
-            Sinyal Sahibi: <span className="text-purple-500">Kaptan</span>
+    <div className="min-h-screen bg-[#020617] text-white relative overflow-hidden">
+      <BackgroundParticles />
+      
+      <main className="relative z-10 max-w-4xl mx-auto px-8 pt-32 pb-20">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="text-6xl font-black italic tracking-tighter mb-8 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            RADAR NEDİR?
           </h1>
           
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="space-y-6 text-slate-300 italic">
-              <p>
-                20 yılı aşkın süredir piksellerin arasında kaybolmuş, hikaye odaklı oyunların evreninde kendine yer edinmiş bir oyun tutkunuyum.
-              </p>
-              <p>
-                Bu platform, oyunları sadece birer eğlence aracı olarak değil, birer sanat eseri ve teknik başarı olarak görenlerin buluşma noktasıdır.
-              </p>
-            </div>
+          <p className="text-xl text-slate-400 leading-relaxed mb-12 font-medium">
+            Oyun dünyasındaki gürültüyü kesmek için doğduk. Radar, sadece bir inceleme sitesi değil; 
+            bir oyunun atmosferinden yapay zekasına kadar her detayı analiz eden dijital bir gözlem evidir.
+          </p>
 
-            <div className="space-y-4">
-              {yetenekler.map((y) => (
-                <div key={y.isim}>
-                  <div className="flex justify-between text-[10px] font-black uppercase tracking-widest mb-1">
-                    <span>{y.isim}</span>
-                    <span className="text-purple-400">{y.oran}</span>
-                  </div>
-                  <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      animate={{ width: y.oran }}
-                      transition={{ duration: 1.5, delay: 0.5 }}
-                      className="h-full bg-gradient-to-r from-purple-600 to-blue-500"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {ozellikler.map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-slate-900/40 backdrop-blur-xl border border-white/5 p-6 rounded-[2rem] hover:border-purple-500/30 transition-all"
+              >
+                <div className="text-3xl mb-4">{item.ikon}</div>
+                <h3 className="font-black text-sm mb-2 text-purple-400 uppercase tracking-widest">{item.baslik}</h3>
+                <p className="text-xs text-slate-500 font-bold leading-relaxed">{item.detay}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-16 p-8 bg-purple-600/10 border border-purple-500/20 rounded-[3rem] text-center">
+            <h2 className="font-black italic text-2xl mb-4 uppercase">Vizyonumuz</h2>
+            <p className="text-slate-300 italic">"Oyuncular için, oyuncular tarafından tasarlanan en hassas veri ağı."</p>
           </div>
         </motion.div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }

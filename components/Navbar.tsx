@@ -2,13 +2,16 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { User } from '@supabase/supabase-js'; 
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
-
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
+
+  const isAdminPage = pathname?.startsWith('/admin');
 
   useEffect(() => {
     const getUser = async () => {
@@ -21,9 +24,7 @@ export default function Navbar() {
       setUser(session?.user ?? null);
     });
 
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   const handleLogout = async () => {
@@ -35,29 +36,69 @@ export default function Navbar() {
     }
   };
 
+
+  if (isAdminPage) return null;
+
+  const navLinks = [
+    { isim: 'KEŞFET', href: '/' },
+    { isim: 'HAKKIMDA', href: '/hakkimda' },
+    { isim: 'İLETİŞİM', href: '/iletisim' },
+  ];
+
   return (
-    <nav className="bg-[#0f172a] border-b border-slate-800 p-4 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link href="/" className="text-xl font-black italic bg-linear-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent hover:opacity-80 transition">
-          OYUNİNCELE
-        </Link>
+    <nav className="absolute top-0 left-0 right-0 z-[100] px-6 py-6">
+      <div className="max-w-7xl mx-auto flex justify-between items-center bg-slate-900/60 backdrop-blur-xl border border-white/5 p-3 rounded-[2rem] shadow-2xl">
         
-        <div className="flex gap-4 items-center">
+        {/* LOGO */}
+        <Link href="/" className="group pl-4">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform">
+              <span className="text-white font-black italic">R</span>
+            </div>
+            <span className="text-xl font-black italic tracking-tighter text-white group-hover:text-purple-400 transition-colors">
+              RADAR<span className="text-purple-500">.</span>
+            </span>
+          </div>
+        </Link>
+
+        <div className="hidden md:flex gap-8 items-center bg-white/5 px-6 py-2 rounded-2xl border border-white/5">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link key={link.href} href={link.href} className="relative group">
+                <span className={`text-[10px] font-black tracking-[0.2em] transition-colors ${
+                  isActive ? 'text-purple-400' : 'text-slate-400 group-hover:text-white'
+                }`}>
+                  {link.isim}
+                </span>
+                {isActive && (
+                  <motion.div 
+                    layoutId="navUnderline"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-purple-500 rounded-full"
+                  />
+                )}
+              </Link>
+            );
+          })}
+        </div>
+
+ 
+        <div className="flex gap-3 items-center pr-2">
           {user ? (
             <>
-              <Link href="/admin" className="text-sm text-slate-300 hover:text-white transition font-medium">
-                Admin Paneli
+              <Link href="/admin" className="text-[10px] font-black tracking-widest text-slate-400 hover:text-white transition uppercase mr-2">
+                Panel
               </Link>
               <button 
                 onClick={handleLogout}
-                className="bg-red-500/10 text-red-500 px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-600 hover:text-white transition-all active:scale-95"
+                className="bg-red-500/10 text-red-500 px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all active:scale-95 border border-red-500/20"
               >
-                Çıkış Yap
+                Çıkış
               </button>
             </>
           ) : (
-            <Link href="/login" className="bg-purple-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-purple-700 transition-all active:scale-95 shadow-lg shadow-purple-500/20">
-              Giriş Yap
+            <Link href="/login" className="bg-purple-600 text-white px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-purple-700 transition-all active:scale-95 shadow-lg shadow-purple-500/20">
+              Giriş
             </Link>
           )}
         </div>

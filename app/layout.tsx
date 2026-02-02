@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar"; 
+import BackgroundParticles from "@/components/BackgroundParticles";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,12 +25,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr"> 
+    <html lang="tr" className="scroll-smooth"> 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0f172a] text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#020617] text-white overflow-x-hidden selection:bg-purple-500/30`}
       >
+     
+        <BackgroundParticles /> 
+
         <Navbar />
-        <main>
+        
+    
+        <main className="min-h-screen pt-4 relative z-10"> 
           {children}
         </main>
       </body>

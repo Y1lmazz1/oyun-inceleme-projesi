@@ -65,6 +65,7 @@ export default function Home() {
       />
     </div>
   );
+  
 
   return (
 
@@ -133,6 +134,14 @@ export default function Home() {
             </div>
           </motion.section>
         )}
+
+<Link href="/quiz">
+  <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border border-purple-500/30 p-8 rounded-[3rem] text-center hover:scale-[1.02] transition-transform cursor-pointer shadow-2xl shadow-purple-500/10">
+    <h3 className="text-sm font-black text-purple-400 tracking-[0.3em] mb-2 uppercase">Radar Algoritması Hazır</h3>
+    <h2 className="text-3xl font-black italic">HANGİ OYUN KARAKTERİSİN?</h2>
+    <p className="text-slate-400 mt-2 font-bold text-xs uppercase tracking-widest">Kişiliğini analiz edelim, evrenini bulalım.</p>
+  </div>
+</Link>
 
 
         <header className="mb-20 space-y-12 text-center">

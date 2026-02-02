@@ -40,10 +40,11 @@ export default function Navbar() {
   if (isAdminPage) return null;
 
   const navLinks = [
-    { isim: 'KEŞFET', href: '/' },
-    { isim: 'HAKKIMDA', href: '/hakkimda' },
-    { isim: 'İLETİŞİM', href: '/iletisim' },
-  ];
+  { isim: 'KEŞFET', href: '/' },
+  { isim: 'HAKKIMIZDA', href: '/hakkimda' },
+  { isim: 'ETKİNLİK', href: '/quiz', isNew: true },
+  { isim: 'İLETİŞİM', href: '/iletisim' },
+];
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-[100] px-6 py-6">
@@ -63,23 +64,32 @@ export default function Navbar() {
 
         <div className="hidden md:flex gap-8 items-center bg-white/5 px-6 py-2 rounded-2xl border border-white/5">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link key={link.href} href={link.href} className="relative group">
-                <span className={`text-[10px] font-black tracking-[0.2em] transition-colors ${
-                  isActive ? 'text-purple-400' : 'text-slate-400 group-hover:text-white'
-                }`}>
-                  {link.isim}
-                </span>
-                {isActive && (
-                  <motion.div 
-                    layoutId="navUnderline"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-purple-500 rounded-full"
-                  />
-                )}
-              </Link>
-            );
-          })}
+  const isActive = pathname === link.href;
+  return (
+    <Link key={link.href} href={link.href} className="relative group flex items-center gap-1">
+      <span className={`text-[10px] font-black tracking-[0.2em] transition-colors ${
+        isActive ? 'text-purple-400' : 'text-slate-400 group-hover:text-white'
+      }`}>
+        {link.isim}
+      </span>
+      
+    
+      {link.isNew && (
+        <span className="flex h-2 w-2 relative">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+        </span>
+      )}
+
+      {isActive && (
+        <motion.div 
+          layoutId="navUnderline"
+          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-purple-500 rounded-full"
+        />
+      )}
+    </Link>
+  );
+})}
         </div>
 
  

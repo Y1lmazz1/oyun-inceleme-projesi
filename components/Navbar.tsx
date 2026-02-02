@@ -42,7 +42,7 @@ export default function Navbar() {
   const navLinks = [
   { isim: 'KEŞFET', href: '/' },
   { isim: 'HAKKIMIZDA', href: '/hakkimda' },
-  { isim: 'ETKİNLİK', href: '/quiz', isNew: true },
+  { isim: 'ETKİNLİK', href: '/etkinlikler', isNew: true },
   { isim: 'İLETİŞİM', href: '/iletisim' },
 ];
 

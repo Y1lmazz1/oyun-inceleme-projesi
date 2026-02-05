@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
-// --- SENİN ARKAPLAN PARÇACIK BİLEŞENİN ---
 function BackgroundParticles() {
   const [mounted, setMounted] = useState(false);
   const [particles, setParticles] = useState<{ id: number; x: number; y: number; size: number; duration: number; delay: number }[]>([]);
@@ -58,7 +57,6 @@ function BackgroundParticles() {
   );
 }
 
-// --- ANA SAYFA BİLEŞENİ ---
 interface Oyun {
   id: number;
   ad: string;
@@ -77,7 +75,6 @@ interface Etkinlik {
   color: string;
 }
 
-// Yeni Eklenen Yorum Interface'i
 interface Yorum {
   id: number;
   kullanici: string;
@@ -92,11 +89,9 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [loadingMore, setLoadingMore] = useState<boolean>(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
   const [heroIndex, setHeroIndex] = useState(0);
   const [eventIndex, setEventIndex] = useState(0);
-  const [yorumIndex, setYorumIndex] = useState(0); // Yeni State
-
+  const [yorumIndex, setYorumIndex] = useState(0);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const ITEMS_PER_PAGE = 6;
@@ -113,7 +108,6 @@ export default function Home() {
     { id: 4, baslik: "ŞANS ÇARKI", ozet: "Kararsız mı kaldın? Sinyali başlat ve kaderin senin için bir oyun seçmesine izin ver.", link: "/etkinlikler", etiket: "DİJİTAL ŞANS", color: "from-emerald-500 to-cyan-600" }
   ];
 
-  // Statik Yorum Verileri
   const yorumlar: Yorum[] = [
     { id: 1, kullanici: "@tech_nomad", mesaj: "Radar sayesinde tam aradığım o indie RPG'yi buldum. Tahmin motoru gerçekten çalışıyor!", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=1" },
     { id: 2, kullanici: "@cyber_ghost", mesaj: "Arayüz tasarımı büyüleyici. Oyun detayları ve puanlamalar çok tutarlı.", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=2" },
@@ -180,7 +174,7 @@ export default function Home() {
   useEffect(() => {
     const eventTimer = setInterval(() => {
         setEventIndex((prev) => (prev + 1) % etkinlikler.length);
-        setYorumIndex((prev) => (prev + 1) % yorumlar.length); // Yorumlar da dönsün
+        setYorumIndex((prev) => (prev + 1) % yorumlar.length);
     }, 8000);
     return () => clearInterval(eventTimer);
   }, [etkinlikler.length]);
@@ -200,7 +194,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#020617] text-slate-200 overflow-x-hidden selection:bg-purple-500/30">
       
-      {/* --- ARKA PLAN KATMANLARI --- */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <BackgroundParticles />
         <motion.div 
@@ -216,7 +209,6 @@ export default function Home() {
 
       <main className="max-w-7xl mx-auto py-16 px-6 relative z-10">
         
-        {/* HERO SECTION */}
         {oyunlar.length > 0 && !searchTerm && (
           <section className="relative w-full h-[80vh] bg-slate-900/40 rounded-[4rem] overflow-hidden mb-24 border border-white/5 shadow-2xl group">
             <AnimatePresence mode="wait">
@@ -256,7 +248,6 @@ export default function Home() {
           </section>
         )}
 
-        {/* HEADER & FILTERS */}
         <header className="mb-24 text-center space-y-12">
           <motion.h1 initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} className="text-7xl md:text-9xl font-black text-white tracking-tighter italic uppercase">
             OYUN <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-blue-500">RADARI</span>
@@ -277,7 +268,6 @@ export default function Home() {
           </div>
         </header>
 
-        {/* OYUN LISTESI */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <AnimatePresence mode='popLayout'>
             {oyunlar.map((oyun, idx) => {
@@ -301,7 +291,6 @@ export default function Home() {
           </AnimatePresence>
         </div>
 
-        {/* LOAD MORE */}
         {hasMore && (
           <div className="mt-24 flex justify-center">
             <button onClick={loadMore} disabled={loadingMore} className="group relative px-20 py-7 bg-transparent overflow-hidden rounded-3xl border border-white/10">
@@ -313,10 +302,8 @@ export default function Home() {
           </div>
         )}
 
-        {/* --- ETKINLIK & YORUM SECTION (REVİZE EDİLDİ) --- */}
         <section className="mt-48 grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch px-4">
           
-          {/* SOL TARAF: ETKİNLİK SLIDER (2/3 ORANINDA) */}
           <div className="lg:col-span-2 relative">
             <AnimatePresence mode="wait">
               <motion.div 
@@ -339,7 +326,6 @@ export default function Home() {
             </AnimatePresence>
           </div>
 
-          {/* SAĞ TARAF: KULLANICI YORUMLARI (1/3 ORANINDA) */}
           <div className="lg:col-span-1 relative">
             <div className="h-full bg-purple-900/10 backdrop-blur-xl border border-purple-500/20 p-12 rounded-[4rem] flex flex-col justify-between min-h-[500px]">
               <div>
@@ -382,7 +368,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Slider Noktaları */}
               <div className="mt-8 flex gap-2">
                 {yorumlar.map((_, i) => (
                   <button 

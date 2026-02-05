@@ -1,30 +1,62 @@
-# 🎮 GameCritique - Profesyonel Oyun İnceleme Platformu
+# 🛰️ OYUN RADARI V2.0 // NEBULA OS
 
-Bu proje, oyun tutkunları için modern, hızlı ve güvenli bir inceleme platformudur. Kullanıcılar oyun incelemelerini okuyabilir ve yorum yapabilirken, admin paneli üzerinden tam kontrol sağlanmaktadır.
+Oyun dünyasının en derin sinyallerini yakalayan, yapay zeka destekli verilerle harmanlanmış ve modern UI trendlerini (Glassmorphism & Neon) takip eden yeni nesil bir oyun keşif platformu.
 
-## 🚀 Özellikler
 
-- **Admin Paneli:** Oyun ekleme, düzenleme ve silme işlemleri.
-- **Yorum Sistemi:** Kullanıcılar tarafından anlık yorum ekleme ve admin tarafından yorum yönetimi.
-- **Güvenli Kimlik Doğrulama:** Supabase Auth ile korunan admin erişimi.
-- **Dinamik İçerik:** Next.js Server Actions ve Supabase ile anlık veri güncellenmesi.
-- **Modern Arayüz:** Tailwind CSS ve Slate teması ile göz yormayan "Gaming" tasarımı.
 
-## 🛠️ Kullanılan Teknolojiler
+---
 
-- **Framework:** [Next.js 15 (App Router)](https://nextjs.org/)
-- **Veritabanı & Auth:** [Supabase](https://supabase.com/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Dil:** [TypeScript](https://www.typescriptlang.org/)
+## 🚀 ÖZELLİKLER
 
-## 📦 Kurulum
+* **Sinyal Analizi:** Supabase ile entegre gerçek zamanlı oyun veritabanı.
+* **Radar Sesleri (Social Proof):** Doğrulanmış kullanıcı yorumlarını içeren dinamik dikey slider.
+* **Şans Çarkı:** Ne oynayacağına karar veremeyenler için dijital kader motoru.
+* **Nebula UI:** Framer Motion ile güçlendirilmiş, fare hareketlerine duyarlı (parallax) ve akışkan arayüz.
+* **Mobil Uyumlu:** Her türlü cihazda kusursuz çalışan esnek layout yapısı.
 
-Projeyi yerel bilgisayarınızda çalıştırmak için şu adımları izleyin:
+---
 
-1. **Repoyu klonlayın:**
-   ```bash
-<<<<<<< HEAD
-   git clone [https://github.com/Y1lmazz1/oyun-inceleme-projesi.git](https://github.com/Y1lmazz1/oyun-inceleme-projesi.git)
-=======
-   git clone [https://github.com/Y1lmazz1/oyun-inceleme-projesi.git](https://github.com/Y1lmazz1/oyun-inceleme-projesi.git)
->>>>>>> bb21d60 (Admin paneli silme ve düzenleme özellikleri eklendi)
+## 🛠️ TEKNOLOJİ YIĞINI
+
+| Teknoloji | Kullanım Amacı |
+| :--- | :--- |
+| **Next.js 15** | Framework (App Router) |
+| **TypeScript** | Tip Güvenliği |
+| **Tailwind CSS** | Stil Yönetimi |
+| **Framer Motion** | İleri Seviye Animasyonlar |
+| **Supabase** | Backend & Database |
+| **Lucide Icons** | Vektörel İkon Seti |
+
+---
+
+## 📦 KURULUM
+
+Projeyi yerel ortamınızda çalıştırmak için şu adımları takip edin:
+
+1.  **Depoyu Klonlayın:**
+    ```bash
+    git clone [https://github.com/Y1lmazz1/oyun-radari.git](https://github.com/Y1lmazz1/oyun-radari.git)
+    ```
+
+2.  **Bağımlılıkları Yükleyin:**
+    ```bash
+    npm install
+    ```
+
+3.  **Çevre Değişkenlerini Ayarlayın:**
+    `.env.local` dosyası oluşturun ve Supabase bilgilerinizi ekleyin:
+    ```env
+    NEXT_PUBLIC_SUPABASE_URL=your_url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+    ```
+
+4.  **Geliştirme Sunucusunu Başlatın:**
+    ```bash
+    npm run dev
+    ```
+
+
+
+
+
+**Radar V2.0** - *Sinyali Takip Et.*

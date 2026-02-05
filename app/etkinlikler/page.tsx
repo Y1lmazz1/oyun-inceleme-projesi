@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LuckyWheel from "@/components/LuckyWheel";
 
-const RAWG_API_KEY = "3d7f66b39eed4e2e8fdb53abe22da0ae";
+const RAWG_API_KEY = process.env.NEXT_PUBLIC_RAWG_API_KEY;
 
 
 const MOD_THEMES = {

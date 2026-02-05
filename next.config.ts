@@ -25,7 +25,13 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.playstation.com', // Bazı linkler için gerekebilir
+        hostname: 'www.playstation.com', 
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.dicebear.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
